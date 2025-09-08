@@ -52,7 +52,7 @@ The following references were used in the development of this project:
 
 After v3.0.0, ncnn will be deprecated, and the project will use ccrestoration(PyTorch) as the algorithm implementation.
 
-- [ccrestoration](https://github.com/TensoRaws/ccrestoration)
+- [ccrestoration](https://github.com/EutropicAI/ccrestoration)
 - [PyTorch](https://github.com/pytorch/pytorch)
 
 ---
