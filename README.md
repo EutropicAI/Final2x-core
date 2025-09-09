@@ -62,4 +62,4 @@ After v3.0.0, ncnn will be deprecated, and the project will use ccrestoration(Py
 ### License
 
 This project is licensed under the BSD 3-Clause - see
-the [LICENSE file](https://github.com/Tohrusky/Final2x-core/blob/main/LICENSE) for details.
+the [LICENSE file](./LICENSE) for details.

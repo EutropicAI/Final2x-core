@@ -70,7 +70,7 @@ jobs:
           make test
 
       - name: Codecov
-        if: matrix.os-version == 'ubuntu-20.04'
+        if: matrix.os-version == 'ubuntu-latest'
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
