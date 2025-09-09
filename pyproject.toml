@@ -34,12 +34,12 @@ classifiers = [
   "Programming Language :: Python :: 3.12"
 ]
 description = "core library for Final2x"
-homepage = "https://github.com/Tohrusky/Final2x-core"
+homepage = "https://github.com/EutropicAI/Final2x-core"
 license = "BSD-3-Clause"
 name = "Final2x_core"
 packages = [{include = "Final2x_core"}]
 readme = "README.md"
-repository = "https://github.com/Tohrusky/Final2x-core"
+repository = "https://github.com/EutropicAI/Final2x-core"
 version = "3.2.0"
 
 # Requirements
