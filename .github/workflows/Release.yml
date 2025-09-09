@@ -22,6 +22,7 @@ jobs:
         os-version: ["windows-latest", "macos-14"]
         python-version: ["3.11"]
         poetry-version: ["1.8.3"]
+        ccrestoration-version: ["0.2.2"]
 
     runs-on: ${{ matrix.os-version }}
     steps:
@@ -42,7 +43,7 @@ jobs:
           pip install numpy==1.26.4
           pip install opencv-python==4.10.0.84
 
-          pip install ccrestoration
+          pip install ccrestoration==${{ matrix.ccrestoration-version }}
 
           pip install PyYAML pydantic loguru
 

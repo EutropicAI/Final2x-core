@@ -45,7 +45,7 @@ version = "3.2.0"
 # Requirements
 [tool.poetry.dependencies]
 PyYAML = "*"
-ccrestoration = "0.2.1"
+ccrestoration = "0.2.2"
 loguru = "*"
 pydantic = "*"
 python = "^3.9"
