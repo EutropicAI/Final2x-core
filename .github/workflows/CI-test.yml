@@ -24,8 +24,6 @@ jobs:
       matrix:
         os-version: ["windows-latest", "ubuntu-latest", "macos-14"]
         python-version: ["3.11"]
-        poetry-version: ["1.8.3"]
-        ccrestoration-version: ["0.2.2"]
 
     runs-on: ${{ matrix.os-version }}
     steps:
@@ -37,31 +35,12 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - uses: abatilo/actions-poetry@v3
-        with:
-          poetry-version: ${{ matrix.poetry-version }}
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
 
       - name: Install dependencies
         run: |
-          pip install numpy==1.26.4
-          pip install opencv-python==4.10.0.84
-
-          pip install ccrestoration==${{ matrix.ccrestoration-version }}
-
-          pip install PyYAML pydantic loguru
-          pip install pre-commit scikit-image
-          pip install pytest pytest-cov coverage
-          pip install mypy ruff
-
-      - name: Install PyTorch on Windows
-        if: matrix.os-version == 'windows-latest'
-        run: |
-          pip install torch==2.7.1 torchvision==0.22.1 --index-url https://download.pytorch.org/whl/cu128
-
-      - name: Install PyTorch on non-Windows
-        if: matrix.os-version != 'windows-latest'
-        run: |
-          pip install torch==2.7.1 torchvision==0.22.1
+          uv sync
 
       - name: Test
         run: |
@@ -81,8 +60,6 @@ jobs:
       matrix:
         os-version: ["windows-latest", "ubuntu-latest", "macos-14"]
         python-version: ["3.11"]
-        poetry-version: ["1.8.3"]
-        ccrestoration-version: ["0.2.2"]
 
     runs-on: ${{ matrix.os-version }}
     steps:
@@ -94,32 +71,15 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - uses: abatilo/actions-poetry@v3
-        with:
-          poetry-version: ${{ matrix.poetry-version }}
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
 
       - name: Install dependencies
         run: |
-          pip install numpy==1.26.4
-          pip install opencv-python==4.10.0.84
-
-          pip install ccrestoration==${{ matrix.ccrestoration-version }}
-
-          pip install PyYAML pydantic loguru
-
-      - name: Install PyTorch on Windows
-        if: matrix.os-version == 'windows-latest'
-        run: |
-          pip install torch==2.7.1 torchvision==0.22.1 --index-url https://download.pytorch.org/whl/cu128
-
-      - name: Install PyTorch on non-Windows
-        if: matrix.os-version != 'windows-latest'
-        run: |
-          pip install torch==2.7.1 torchvision==0.22.1
+          uv sync
 
       - name: Build
         run: |
-          pip install pyinstaller~=6.14.2
           make gen
           make pyinstaller
 
@@ -179,7 +139,6 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.11"]
-        poetry-version: ["1.8.3"]
 
     runs-on: ubuntu-latest
     steps:
@@ -191,9 +150,8 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - uses: abatilo/actions-poetry@v3
-        with:
-          poetry-version: ${{ matrix.poetry-version }}
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
 
       - name: Build package
         run: |

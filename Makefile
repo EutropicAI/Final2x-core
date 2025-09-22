@@ -19,7 +19,7 @@ gen-ts:
 
 .PHONY: build
 build:
-	uv build --wheel
+	uv build
 
 .PHONY: pyinstaller
 pyinstaller:
