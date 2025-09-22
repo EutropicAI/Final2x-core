@@ -4,9 +4,9 @@ requires = ["hatchling"]
 
 [dependency-groups]
 dev = [
-  "numpy==1.26.4",
+  "numpy~=1.26.4",
   "ccrestoration==0.2.2",
-  "opencv-python==4.10.0.84",
+  "opencv-python~=4.10.0.84",
   "pre-commit",
   "pyinstaller~=6.14.2",
   "scikit-image",
@@ -15,13 +15,13 @@ dev = [
   "torchaudio"
 ]
 test = [
-  "coverage>=7.2.0,<8",
-  "pytest~=8.0",
-  "pytest-cov~=4.0"
+  "coverage",
+  "pytest",
+  "pytest-cov"
 ]
 typing = [
-  "mypy>=1.8.0,<2",
-  "ruff>=0.3.7,<0.4"
+  "mypy",
+  "ruff"
 ]
 
 [project]
@@ -86,6 +86,15 @@ strict = true
 warn_return_any = false
 
 [tool.ruff]
+line-length = 120
+
+[tool.ruff.format]
+indent-style = "space"
+line-ending = "auto"
+quote-style = "double"
+skip-magic-trailing-comma = false
+
+[tool.ruff.lint]
 extend-ignore = ["B018", "B019", "RUF001", "PGH003", "PGH004", "RUF003", "E402", "RUF002", "B904"]
 extend-select = [
   "I",  # isort
@@ -97,18 +106,11 @@ extend-select = [
   "YTT"  # flake8-2020
 ]
 fixable = ["ALL"]
-line-length = 120
 
-[tool.ruff.format]
-indent-style = "space"
-line-ending = "auto"
-quote-style = "double"
-skip-magic-trailing-comma = false
-
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 combine-as-imports = true
 
-[tool.ruff.mccabe]
+[tool.ruff.lint.mccabe]
 max-complexity = 10
 
 [tool.uv]
