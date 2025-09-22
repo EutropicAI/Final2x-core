@@ -1,6 +1,57 @@
 [build-system]
-build-backend = "poetry-core.masonry.api"
-requires = ["poetry-core"]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[dependency-groups]
+dev = [
+  "numpy==1.26.4",
+  "ccrestoration==0.2.2",
+  "opencv-python==4.10.0.84",
+  "pre-commit",
+  "pyinstaller~=6.14.2",
+  "scikit-image",
+  "torch",
+  "torchvision",
+  "torchaudio"
+]
+test = [
+  "coverage>=7.2.0,<8",
+  "pytest~=8.0",
+  "pytest-cov~=4.0"
+]
+typing = [
+  "mypy>=1.8.0,<2",
+  "ruff>=0.3.7,<0.4"
+]
+
+[project]
+authors = [{name = "Tohrusky"}]
+classifiers = [
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13"
+]
+dependencies = [
+  "PyYAML",
+  "ccrestoration==0.2.2",
+  "loguru",
+  "pydantic"
+]
+description = "core library for Final2x"
+license = "BSD-3-Clause"
+name = "Final2x_core"
+readme = "README.md"
+requires-python = ">=3.9, <4"
+version = "3.2.0"
+
+[project.scripts]
+Final2x-core = "Final2x_core.__main__:main"
+
+[project.urls]
+Homepage = "https://github.com/EutropicAI/Final2x-core"
+Repository = "https://github.com/EutropicAI/Final2x-core"
 
 [tool.coverage.report]
 exclude_also = [
@@ -16,6 +67,15 @@ omit = [
   "Final2x_core/__main__.py"
 ]
 
+[tool.hatch.build.sources]
+"Final2x_core" = "Final2x_core"
+
+[tool.hatch.build.targets.sdist]
+include = ["Final2x_core"]
+
+[tool.hatch.build.targets.wheel]
+include = ["Final2x_core"]
+
 [tool.mypy]
 disable_error_code = "attr-defined"
 disallow_any_generics = false
@@ -24,50 +84,6 @@ ignore_missing_imports = true
 plugins = ["pydantic.mypy"]
 strict = true
 warn_return_any = false
-
-[tool.poetry]
-authors = ["Tohrusky"]
-classifiers = [
-  "Programming Language :: Python :: 3.9",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12"
-]
-description = "core library for Final2x"
-homepage = "https://github.com/EutropicAI/Final2x-core"
-license = "BSD-3-Clause"
-name = "Final2x_core"
-packages = [{include = "Final2x_core"}]
-readme = "README.md"
-repository = "https://github.com/EutropicAI/Final2x-core"
-version = "3.2.0"
-
-# Requirements
-[tool.poetry.dependencies]
-PyYAML = "*"
-ccrestoration = "0.2.2"
-loguru = "*"
-pydantic = "*"
-python = "^3.9"
-
-[tool.poetry.group.dev.dependencies]
-pre-commit = "^3.7.0"
-pyinstaller = "^6.3.0"
-scikit-image = "*"
-torch = "*"
-torchvision = "*"
-
-[tool.poetry.group.test.dependencies]
-coverage = "^7.2.0"
-pytest = "^8.0"
-pytest-cov = "^4.0"
-
-[tool.poetry.group.typing.dependencies]
-mypy = "^1.8.0"
-ruff = "^0.3.7"
-
-[tool.poetry.scripts]
-Final2x-core = 'Final2x_core.__main__:main'
 
 [tool.ruff]
 extend-ignore = ["B018", "B019", "RUF001", "PGH003", "PGH004", "RUF003", "E402", "RUF002", "B904"]
@@ -94,3 +110,26 @@ combine-as-imports = true
 
 [tool.ruff.mccabe]
 max-complexity = 10
+
+[tool.uv]
+default-groups = [
+  "dev",
+  "test",
+  "typing"
+]
+
+[[tool.uv.index]]
+explicit = true
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+
+[tool.uv.sources]
+torch = [
+  {index = "pytorch-cu128", marker = "sys_platform == 'win32'"}
+]
+torchaudio = [
+  {index = "pytorch-cu128", marker = "sys_platform == 'win32'"}
+]
+torchvision = [
+  {index = "pytorch-cu128", marker = "sys_platform == 'win32'"}
+]

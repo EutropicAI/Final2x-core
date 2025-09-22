@@ -1,2 +1,0 @@
-virtualenvs.create = false
-virtualenvs.options.system-site-packages = true
