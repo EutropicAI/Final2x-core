@@ -167,8 +167,9 @@ jobs:
     needs: [build-wheel]
     strategy:
       matrix:
-        os-version: ["ubuntu-latest"]
+        os-version: ["windows-latest", "ubuntu-latest", "macos-14"]
         python-version: ["3.11"]
+        pytorch-version: ["2.7.1", "2.1.2", "2.0.0", "1.13.0"]
 
     runs-on: ${{ matrix.os-version }}
     steps:
@@ -185,6 +186,26 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - name: Install PyTorch 2.7.1
+        if: matrix.pytorch-version == '2.7.1'
+        run: |
+          pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1
+
+      - name: Install PyTorch 2.1.2
+        if: matrix.pytorch-version == '2.1.2'
+        run: |
+          pip install torch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2
+
+      - name: Install PyTorch 2.0.0
+        if: matrix.pytorch-version == '2.0.0'
+        run: |
+          pip install torch==2.0.0 torchvision==0.15.1 torchaudio==2.0.1
+
+      - name: Install PyTorch 1.13.0
+        if: matrix.pytorch-version == '1.13.0'
+        run: |
+          pip install torch==1.13.0 torchvision==0.14.0 torchaudio==0.13.0
+
       - name: Install dependencies
         run: |
           pip install numpy==1.26.4
@@ -192,16 +213,6 @@ jobs:
 
           cd dist
           pip install *.whl
-
-      - name: Install PyTorch on Windows
-        if: matrix.os-version == 'windows-latest'
-        run: |
-          pip install torch==2.7.1 torchvision==0.22.1 --index-url https://download.pytorch.org/whl/cu128
-
-      - name: Install PyTorch on non-Windows
-        if: matrix.os-version != 'windows-latest'
-        run: |
-          pip install torch==2.7.1 torchvision==0.22.1
 
       - name: Test pip
         run: |
