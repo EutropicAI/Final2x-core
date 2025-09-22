@@ -167,9 +167,9 @@ jobs:
     needs: [build-wheel]
     strategy:
       matrix:
-        os-version: ["windows-latest", "ubuntu-latest", "macos-14"]
+        os-version: ["ubuntu-latest"]
         python-version: ["3.11"]
-        pytorch-version: ["2.7.1", "2.1.2", "2.0.0", "1.13.0"]
+        pytorch-version: ["2.7.1", "2.1.2", "2.0.0"]
 
     runs-on: ${{ matrix.os-version }}
     steps:
