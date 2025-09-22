@@ -42,7 +42,6 @@ jobs:
       - name: Build
         run: |
           make gen
-          make gen-ts
           make pyinstaller
 
       - name: zip-windows
