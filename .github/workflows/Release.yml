@@ -37,7 +37,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          uv sync --group dev
+          uv sync --no-default-groups --group dev
 
       - name: Build
         run: |
