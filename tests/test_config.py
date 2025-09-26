@@ -2,7 +2,7 @@ import base64
 
 import pytest
 
-from Final2x_core.config import SRConfig
+from Final2x_core import SRConfig
 
 from .util import CONFIG_PATH
 
