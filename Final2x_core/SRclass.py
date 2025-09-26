@@ -24,7 +24,7 @@ class SRWrapper:
         PrintProgressLog().set(len(self.config.input_path), 1)
 
         self._SR_class: SRBaseModel = AutoModel.from_pretrained(
-            pretrained_model_name=self.config.pretrained_model_name,
+            self.config.pretrained_model_name,
             device=get_device(self.config.device),
             fp16=False,
             tile=tile,

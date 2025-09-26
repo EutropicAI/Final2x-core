@@ -28,7 +28,7 @@ class SRConfig(BaseModel):
                 raise ValueError(f"Error loading config: {e}")
 
         cfg = cls(**config)
-        c: BaseConfig = AutoConfig.from_pretrained(pretrained_model_name=cfg.pretrained_model_name)
+        c: BaseConfig = AutoConfig.from_pretrained(cfg.pretrained_model_name)
 
         cfg.cc_model_scale = c.scale
         if cfg.target_scale is None or cfg.target_scale <= 0:
@@ -43,7 +43,7 @@ class SRConfig(BaseModel):
             raise ValueError(f"Error loading config: {e}")
 
         cfg = cls(**config)
-        c: BaseConfig = AutoConfig.from_pretrained(pretrained_model_name=cfg.pretrained_model_name)
+        c: BaseConfig = AutoConfig.from_pretrained(cfg.pretrained_model_name)
 
         cfg.cc_model_scale = c.scale
         if cfg.target_scale is None or cfg.target_scale <= 0:
