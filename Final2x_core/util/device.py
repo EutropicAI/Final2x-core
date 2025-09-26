@@ -1,7 +1,7 @@
 from typing import Union
 
 import torch
-from ccrestoration.util.device import default_device
+from cccv.util.device import DEFAULT_DEVICE
 
 
 def get_device(device: str) -> Union[torch.device, str]:
@@ -13,7 +13,7 @@ def get_device(device: str) -> Union[torch.device, str]:
     device = device.lower()
 
     if device.startswith("auto"):
-        return default_device()
+        return DEFAULT_DEVICE
     elif device.startswith("cpu"):
         return torch.device("cpu")
     elif device.startswith("cuda"):
@@ -27,5 +27,4 @@ def get_device(device: str) -> Union[torch.device, str]:
     elif device.startswith("xpu"):
         return torch.device("xpu")
     else:
-        print(f"Unknown device: {device}, use auto instead.")
-        return default_device()
+        return DEFAULT_DEVICE

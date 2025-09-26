@@ -2,16 +2,16 @@ import math
 
 import cv2
 import numpy as np
-from ccrestoration import AutoModel, SRBaseModel
+from cccv import AutoModel, SRBaseModel
 from loguru import logger
 
 from Final2x_core.config import SRConfig
 from Final2x_core.util import PrintProgressLog, get_device
 
 
-class CCRestoration:
+class SRWrapper:
     """
-    Super-resolution class for processing images, using ccrestoration.
+    Super-resolution class for processing images, using cccv.
 
     :param config: SRConfig
     """

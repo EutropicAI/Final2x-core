@@ -6,7 +6,7 @@ import numpy as np
 from loguru import logger
 
 from Final2x_core.config import SRConfig
-from Final2x_core.SRclass import CCRestoration
+from Final2x_core.SRclass import SRWrapper
 from Final2x_core.util import PrintProgressLog
 
 
@@ -20,7 +20,7 @@ def sr_queue(config: SRConfig) -> None:
     input_path: List[Path] = config.input_path
     output_path: Path = config.output_path / "outputs"
     output_path.mkdir(parents=True, exist_ok=True)  # create output folder
-    sr = CCRestoration(config)
+    sr = SRWrapper(config)
 
     logger.info("Processing------[ 0.0% ]")
 

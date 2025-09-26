@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Any, List, Optional, Union
 
 import yaml
-from ccrestoration import AutoConfig, BaseConfig, ConfigType
+from cccv import AutoConfig, BaseConfig, ConfigType
 from pydantic import BaseModel, DirectoryPath, FilePath, field_validator
 
 

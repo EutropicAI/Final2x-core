@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import List
 
-from ccrestoration import ConfigType, ModelType
+from cccv import ConfigType, ModelType
 
 projectPATH = Path(__file__).resolve().parent.parent.absolute()
 

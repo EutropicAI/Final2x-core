@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 import yaml
-from ccrestoration import ConfigType
+from cccv import ConfigType
 
 projectPATH = Path(__file__).resolve().parent.parent.absolute()
 
