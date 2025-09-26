@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Any, List, Optional, Union
 
 import yaml
-from cccv import AutoConfig, BaseConfig, ConfigType
+from cccv import ConfigType
 from pydantic import BaseModel, DirectoryPath, FilePath, field_validator
 
 
@@ -17,7 +17,6 @@ class SRConfig(BaseModel):
     output_path: DirectoryPath
     input_path: List[FilePath]
     save_format: Optional[str] = ".png"
-    cc_model_scale: Optional[int] = None
 
     @classmethod
     def from_yaml(cls, yaml_path: Union[Path, str]) -> Any:
@@ -28,11 +27,8 @@ class SRConfig(BaseModel):
                 raise ValueError(f"Error loading config: {e}")
 
         cfg = cls(**config)
-        c: BaseConfig = AutoConfig.from_pretrained(cfg.pretrained_model_name)
-
-        cfg.cc_model_scale = c.scale
         if cfg.target_scale is None or cfg.target_scale <= 0:
-            cfg.target_scale = c.scale
+            cfg.target_scale = 2
         return cfg
 
     @classmethod
@@ -43,11 +39,8 @@ class SRConfig(BaseModel):
             raise ValueError(f"Error loading config: {e}")
 
         cfg = cls(**config)
-        c: BaseConfig = AutoConfig.from_pretrained(cfg.pretrained_model_name)
-
-        cfg.cc_model_scale = c.scale
         if cfg.target_scale is None or cfg.target_scale <= 0:
-            cfg.target_scale = c.scale
+            cfg.target_scale = 2
         return cfg
 
     @classmethod
