@@ -2,20 +2,14 @@ name: Release
 
 on:
   workflow_dispatch:
+  push:
+    tags:
+      - "v*"
 
 env:
   GITHUB_ACTIONS: true
 
 jobs:
-  setup:
-    runs-on: ubuntu-latest
-    outputs:
-      DATE: ${{ steps.get_date.outputs.DATE }}
-    steps:
-      - name: Get current date
-        id: get_date
-        run: echo "DATE=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
-
   build:
     strategy:
       matrix:
@@ -63,7 +57,7 @@ jobs:
           path: dist/Final2x-core/*.7z
 
   github:
-    needs: [setup, build]
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
@@ -80,8 +74,6 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          name: Release ${{ needs.setup.outputs.DATE }}
-          tag_name: ${{ needs.setup.outputs.DATE }}
           files: dist/*
 
   pypi:
