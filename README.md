@@ -15,7 +15,7 @@ Final2x-core is a cross-platform image super-resolution CLI tool for [Final2x](h
 
 Download in [Release](https://github.com/EutropicAI/Final2x-core/releases) or use pip to install (Linux User).
 
-Make sure you have Python >= 3.9 and PyTorch >= 1.13 installed
+Make sure you have Python >= 3.9 and PyTorch >= 2.0 installed
 
 ```shell
 pip install Final2x-core
@@ -49,6 +49,12 @@ make gen
 ### Reference
 
 The following references were used in the development of this project:
+
+After v4.0.0, we use cccv as the algorithm implementation, which implemented most of the features from ccrestoration
+
+- [cccv](https://github.com/EutropicAI/cccv)
+
+---
 
 After v3.0.0, ncnn will be deprecated, and the project will use ccrestoration(PyTorch) as the algorithm implementation.
 
