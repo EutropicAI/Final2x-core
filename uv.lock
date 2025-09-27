@@ -40,7 +40,7 @@ wheels = [
 
 [[package]]
 name = "cccv"
-version = "0.0.3"
+version = "0.0.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "einops" },
@@ -49,7 +49,7 @@ dependencies = [
     { name = "tenacity" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/49/b4/0f46c91da41bbcbedab0e4884d855a3fd1ef12ebac5e6e7f8d4256021bc8/cccv-0.0.3-py3-none-any.whl", hash = "sha256:191694d94ae3c788a24919b828cb1250c49856abca6ea7d1aebbd61b7c7e01b2", size = 107759, upload-time = "2025-09-26T21:55:22.6Z" },
+    { url = "https://files.pythonhosted.org/packages/be/b3/36984e26080fd4f37566ada0e83832856a3cc80bce436f35cb5675c65dee/cccv-0.0.4-py3-none-any.whl", hash = "sha256:acbf7ef4f5a9ff9e38150a53638898864e1b3189e69da2d6f2a375a8f39eddfe", size = 107704, upload-time = "2025-09-27T00:18:45.054Z" },
 ]
 
 [[package]]
@@ -261,7 +261,7 @@ typing = [
 
 [package.metadata]
 requires-dist = [
-    { name = "cccv", specifier = "==0.0.3" },
+    { name = "cccv", specifier = "==0.0.4" },
     { name = "loguru" },
     { name = "pydantic" },
     { name = "pyyaml" },

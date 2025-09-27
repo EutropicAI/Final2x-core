@@ -33,7 +33,7 @@ classifiers = [
 ]
 dependencies = [
   "PyYAML",
-  "cccv==0.0.3",
+  "cccv==0.0.4",
   "loguru",
   "pydantic"
 ]
