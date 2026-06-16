@@ -12,6 +12,7 @@ class SRConfig(BaseModel):
     pretrained_model_name: Union[ConfigType, str]
     device: str
     use_tile: Optional[bool] = None
+    precision: str = "fp32"  # "fp32" | "fp16" | "bf16"
     gh_proxy: Optional[str] = None
     target_scale: Optional[Union[int, float]] = None
     output_path: DirectoryPath
@@ -61,3 +62,10 @@ class SRConfig(BaseModel):
                 return v
 
         raise ValueError(f"device must start with {device_list}")
+
+    @field_validator("precision")
+    def precision_match(cls, v: str) -> str:
+        precision_list = ["fp32", "fp16", "bf16"]
+        if v not in precision_list:
+            raise ValueError(f"precision must be one of {precision_list}")
+        return v
