@@ -1,3 +1,5 @@
+> This repo has been merged into Final2x(https://github.com/EutropicAI/Final2x).
+
 # Final2x-core
 
 ![MacOS](https://img.shields.io/badge/Support-MacOS-blue?logo=Apple&style=flat-square)
